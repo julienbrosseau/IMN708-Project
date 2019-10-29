@@ -3,7 +3,7 @@
 from bin import traitement
 import matplotlib.pyplot as plt
 
-path             = "data/14971938/nifti"
+path             = "data/nifti"
 analyse_axial    = "14971938_T2_AX_FS_20110309130206_8.nii"
 analyse_coronal  = "14971938_T2_STIR_CORO_20110309130206_7.nii"
 analyse_sagittal = "14971938_T1_TSE_SAG_FS_GADO_20110309130206_13.nii"

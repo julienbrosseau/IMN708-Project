@@ -18,7 +18,7 @@ class SegKMeans():
 
     def fit(self, flat_img):
         # Entrainement du modèle
-        return self.kmeans.fit(flat_img)
+        self.kmeans = self.kmeans.fit(flat_img)
     
     def get_labels(self):
         # Retourne les labels du modèle

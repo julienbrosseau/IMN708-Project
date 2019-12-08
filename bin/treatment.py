@@ -4,6 +4,7 @@ import os
 import numpy as np
 import nibabel as nib
 from dipy.denoise.nlmeans import nlmeans
+from scipy import ndimage
 import matplotlib.pyplot as plt
 from matplotlib import cm
 

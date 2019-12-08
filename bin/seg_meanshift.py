@@ -18,7 +18,7 @@ class SegMeanShift():
 
     def fit(self, flat_img):
         # Entrainement du modèle
-        return self.ms.fit(flat_img)
+        self.ms = self.ms.fit(flat_img)
     
     def get_labels(self):
         # Retourne les labels du modèle

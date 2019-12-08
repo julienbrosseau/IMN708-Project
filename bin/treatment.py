@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib import cm
 
 class Treatment():
+    
     def __init__(self):
         # Initialisation de la classe
         pass
@@ -61,7 +62,7 @@ class Treatment():
         n, bins, patches = plt.hist(img_2d.reshape(-1), 50, density=1)
         bin_centers = 0.5 * (bins[:-1] + bins[1:])
 
-        for c, p in zip(normalize(bin_centers), patches):
+        for c, p in zip(self.normalize(bin_centers), patches):
             plt.setp(p, 'facecolor', cm.viridis(c))
 
         plt.show()

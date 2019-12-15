@@ -25,3 +25,5 @@ Lien vers la bibliothèque sklearn [MeanShift](https://scikit-learn.org/stable/m
 Description de la segmentation par "snake". [Lien](https://towardsdatascience.com/image-segmentation-using-pythons-scikit-image-module-533a61ecc980)
 
 Description de la semgentation par "mean shift". [Lien](http://efavdb.com/mean-shift/)
+
+Description de la segmentation par innondation. [Lien](https://scikit-image.org/docs/dev/auto_examples/segmentation/plot_floodfill.html)

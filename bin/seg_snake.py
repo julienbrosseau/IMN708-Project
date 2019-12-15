@@ -24,7 +24,7 @@ class SegSnake():
         # Retourne les points du cercle
         return self.points
 
-    def get_active_contour(self, img_2d, alpha=0.055, beta=0):
+    def get_active_contour(self, img_2d, alpha, beta):
         # Retourne la segmentation de l'image
         return seg.active_contour(img_2d, self.points, alpha=alpha, beta=beta)
     

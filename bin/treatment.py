@@ -72,10 +72,9 @@ class Treatment():
 
         plt.show()
 
-    def set_box(self, img_2d, cropx, cropy):
+    def set_box(self, img_2d, center, cropx, cropy):
         # Retroune un box de taille cropx, cropy
-        y,x = img_2d.shape
-        startx = x//2-(cropx//2)
-        starty = y//2-(cropy//2) 
+        startx = center[0] - (cropx//2)
+        starty = center[1] - (cropy//2) 
 
         return img_2d[starty:starty+cropy,startx:startx+cropx]

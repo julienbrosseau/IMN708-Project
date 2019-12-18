@@ -15,7 +15,7 @@ analyse_sagittal = "14971938_T1_TSE_SAG_FS_GADO_20110309130206_13.nii"
 treatment = tr.Treatment()
 
 # Ouverture du fichier
-img_3d = treatment.open_file(path, analyse_axial)
+img_3d = treatment.open_file(path, analyse_sagittal)
 
 # Debruitage de l'image
 img_3d = treatment.debruitage(img_3d, 5)
@@ -24,9 +24,11 @@ img_3d = treatment.debruitage(img_3d, 5)
 mean_shift = seg.SegMeanShift()
 
 # Tumeur de l'image 6 à 21
+#for i in range(5,10):
+
 for i in range(img_3d.shape[2]):
     img_2d = treatment.get_slice(img_3d, "axial", i)
-    img_2d = treatment.set_box(img_2d, 150, 150)
+    img_2d = treatment.set_box(img_2d, (150, 150), 100, 300)
 
     # Entrainement du modele
     flat_img = np.reshape(img_2d, [-1, 1])
@@ -36,12 +38,12 @@ for i in range(img_3d.shape[2]):
     mean_shift.set_labels(mean_shift.get_labels())
 
     # Recupere l'image avec tous les labels
-    img_reshape = mean_shift.get_img_reshape(150, 150)
+    img_reshape = mean_shift.get_img_reshape(300, 100)
 
     # Fixe le label qui nous interresse et debruite l'image
     mean_shift.set_clustering()
 
-    img_denoise = mean_shift.get_img_denoise(150, 150)
+    img_denoise = mean_shift.get_img_denoise(300, 100)
 
     # Affichage
     fig, ax = plt.subplots(ncols=3)

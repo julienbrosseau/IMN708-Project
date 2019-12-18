@@ -22,8 +22,8 @@ quantification = qu.Quantification()
 
 # Traitement de l'image ----------------------------------------------
 # Ouverture du fichier
-img_3d = treatment.get_file(path, analyse_coronal)
-data_img_3d = treatment.open_file(path, analyse_coronal)
+img_3d = treatment.get_file(path, analyse_sagittal)
+data_img_3d = treatment.open_file(path, analyse_sagittal)
 
 # Debruitage de l'image
 data_img_3d = treatment.debruitage(data_img_3d, 5)
@@ -33,11 +33,11 @@ data_img_3d = treatment.debruitage(data_img_3d, 5)
 list_area = []
 
 # Tumeur de l'image 6 à 21 pour la coupe 'axial'
-for i in range(6, 22):
+#for i in range(6, 22):
 
-#for i in range(data_img_3d.shape[2]):
+for i in range(data_img_3d.shape[2]):
     img_2d = treatment.get_slice(data_img_3d, "axial", i)
-    img_2d = treatment.set_box(img_2d, 150, 150)
+    img_2d = treatment.set_box(img_2d, (150,150), 100, 300)
 
     # Entrainement du modele
     flat_img = np.reshape(img_2d, [-1, 1])
@@ -47,12 +47,12 @@ for i in range(6, 22):
     mean_shift.set_labels(mean_shift.get_labels())
 
     # Recupere l'image avec tous les labels
-    img_reshape = mean_shift.get_img_reshape(150, 150)
+    img_reshape = mean_shift.get_img_reshape(300, 100)
 
     # Fixe le label qui nous interresse et debruite l'image
     mean_shift.set_clustering()
 
-    img_denoise = mean_shift.get_img_denoise(150, 150)
+    img_denoise = mean_shift.get_img_denoise(300, 100)
     # --------------------------------------------------------------------
 
     # Quantification de l'image ------------------------------------------

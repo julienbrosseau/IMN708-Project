@@ -11,7 +11,7 @@ class SegMeanShift():
     def __init__(self):
         # Initialisation de la classe
         self.ms = MeanShift(
-            bandwidth = 50,
+            bandwidth = 40,
             bin_seeding = True
             )
         self.labels = []

@@ -14,6 +14,10 @@ class Treatment():
         # Initialisation de la classe
         pass
 
+    def get_file(self, path, img_nii):
+        # Recupere l'image sans traitement
+        return nib.load(os.path.join(path, img_nii))
+
     def open_file(self, path, img_nii):
         # Ouvrir l image .nii
         img = nib.load(os.path.join(path, img_nii))

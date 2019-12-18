@@ -20,16 +20,13 @@ img_3d = treatment.open_file(path, analyse_axial)
 # Debruitage de l'image
 img_3d = treatment.debruitage(img_3d, 5)
 
-# Recuperation des tranches
-list_img_2d = []
-
 # Initialisation de la classe "KMeans"
 mean_shift = seg.SegMeanShift()
 
-# Tumeur de l'image 8 à 23
+# Tumeur de l'image 6 à 21
 for i in range(img_3d.shape[2]):
     img_2d = treatment.get_slice(img_3d, "axial", i)
-    img_2d = treatment.set_box(img, 150, 150)
+    img_2d = treatment.set_box(img_2d, 150, 150)
 
     # Entrainement du modele
     flat_img = np.reshape(img_2d, [-1, 1])

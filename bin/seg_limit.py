@@ -1,5 +1,8 @@
 # Segmentation des images par seuil
 
+import bin.treatment as tr
+treatment = tr.Treatment()
+
 class SegLimit():
 
     def __init__(self):
@@ -16,3 +19,7 @@ class SegLimit():
                     img_2d[x,y] = 0
 
         return img_2d
+    
+    def get_img_denoise(self, img_2d):
+        # Retourne l'image debruitee
+        return treatment.median_filter(img_2d, 5)

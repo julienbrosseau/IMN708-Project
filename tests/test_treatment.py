@@ -33,7 +33,9 @@ plt.show()
 # Test recuperation histogramme
 img_2d = treatment.get_slice(img_3d, "axial", 15)
 
-img_2d = treatment.set_box(img_2d, 150, 150)
+print(treatment.get_shape(img_2d))
+
+img_2d = treatment.set_box(img_2d, (180, 100), 150, 150)
 
 plt.imshow(img_2d)
 plt.show()

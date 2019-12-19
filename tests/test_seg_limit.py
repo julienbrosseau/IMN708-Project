@@ -20,7 +20,13 @@ img_3d = treatment.open_file(path, analyse_axial)
 
 # Recuperation d'une tranche
 img_2d = treatment.get_slice(img_3d, "axial", 15)
-img_2d = treatment.set_box(img_2d, 150, 150)
+img_2d = treatment.set_box(img_2d, (180, 100), 150, 150)
+
+# Affichage
+fig, ax = plt.subplots(ncols=3)
+
+ax[0].title.set_text("Image d'origine")
+ax[0].imshow(img_2d, cmap='gray')
 
 # Initialisation de la classe "SegLimit"
 seg_limit = seg.SegLimit()
@@ -28,5 +34,12 @@ seg_limit = seg.SegLimit()
 # Segmentation "seuil"
 img_2d_seg = seg_limit.fit(img_2d)
 
-plt.imshow(img_2d)
+img_denoise = seg_limit.get_img_denoise(img_2d_seg)
+
+ax[1].title.set_text("Segmentation par seuil")
+ax[1].imshow(img_2d_seg, cmap='gray')
+
+ax[2].title.set_text("Post-traitement")
+ax[2].imshow(img_denoise, cmap='gray')
+
 plt.show()

@@ -19,7 +19,8 @@ img_3d = treatment.open_file(path, analyse_axial)
 
 # Recuperation d'une tranche
 img_2d = treatment.get_slice(img_3d, "axial", 15)
-img_2d = treatment.set_box(img_2d, (180, 100), 150, 150)
+img_2d = treatment.set_box(img_2d, (180,100), 150, 150) # Box pour la coupe axiale
+#img_2d = treatment.set_box(img_2d, (150,150), 100, 300) # Box pour les coupes coronale et sagittale
 
 # Initialisation de la classe "SegSnake"
 snake = seg.SegSnake()

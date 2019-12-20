@@ -35,7 +35,8 @@ img_2d = treatment.get_slice(img_3d, "axial", 15)
 
 print(treatment.get_shape(img_2d))
 
-img_2d = treatment.set_box(img_2d, (180, 100), 150, 150)
+img_2d = treatment.set_box(img_2d, (180,100), 150, 150) # Box pour la coupe axiale
+#img_2d = treatment.set_box(img_2d, (150,150), 100, 300) # Box pour les coupes coronale et sagittale
 
 plt.imshow(img_2d)
 plt.show()

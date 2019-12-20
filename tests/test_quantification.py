@@ -14,7 +14,7 @@ analyse_sagittal = "14971938_T1_TSE_SAG_FS_GADO_20110309130206_13.nii"
 # Initialisation de la classe "Treatment"
 treatment = tr.Treatment()
 
-# Initialisation de la classe "KMeans"
+# Initialisation de la classe "Mean Shift"
 mean_shift = seg.SegMeanShift()
 
 # Initialisation de la classe "Quantification"
@@ -22,8 +22,8 @@ quantification = qu.Quantification()
 
 # Traitement de l'image ----------------------------------------------
 # Ouverture du fichier
-img_3d = treatment.get_file(path, analyse_sagittal)
-data_img_3d = treatment.open_file(path, analyse_sagittal)
+img_3d = treatment.get_file(path, analyse_coronal)
+data_img_3d = treatment.open_file(path, analyse_coronal)
 
 # Debruitage de l'image
 data_img_3d = treatment.debruitage(data_img_3d, 5)
@@ -37,7 +37,8 @@ list_area = []
 
 for i in range(data_img_3d.shape[2]):
     img_2d = treatment.get_slice(data_img_3d, "axial", i)
-    img_2d = treatment.set_box(img_2d, (150,150), 100, 300)
+    #img_2d = treatment.set_box(img_2d, (180,100), 150, 150) # Box pour la coupe axiale
+    img_2d = treatment.set_box(img_2d, (150,150), 100, 300) # Box pour les coupes coronale et sagittale
 
     # Entrainement du modele
     flat_img = np.reshape(img_2d, [-1, 1])
